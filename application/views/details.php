@@ -4,53 +4,38 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><?= $user[0]['first_name'] ?>'s Page</title>
-        <link rel=stylesheet href="/style.css">
+        <title>Trip Details</title>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            *{
-                margin: 10px;
-                padding: 5px;
-            }
-            p{
-                display: block;
-                margin-bottom: 10px; 
-                margin-left: 30px; 
-                width: 503px;
-            }
-            #login{
-                border: 1px solid black; 
-            }
-            #review p{
-                margin-left: 35px;  
-            }
-            #recent a{
-                display: block; 
-            }
-        </style>
-        
+        <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/public/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/css/main.css">
+        <link rel="stylesheet" href="/public/css/sl-slide.css">
     </head>
     <body>
         <a href="/trips/user_dashboard">Home</a><a href="/trips/logout">Log Off</a>
         <div id='recent'>
+          <section class="title">
+
                 <h3><?= $trip['place'] ?> </h3>
-                <p>Planned By:<?= $trip['name'] ?></p>
+          </section>
+                <p>Planned By:<?= $trip['planned_by'] ?></p>
                 <p>Description:<?= $trip['plan'] ?></p>
                 <p>Travel Date From:<?= $trip['start'] ?></p>
                 <p>Travel Date To:<?= $trip['end'] ?></p>
-                 
+
         </div>
         <div>
             <h4>Other users' joining this trip:</h4>
-            <?php 
-            // var_dump($companions); 
+            <?php
+            // var_dump($companions);
             foreach ($companions as $companion) { ?>
                 <p><?= $companion['name'] ?></p>
             <?php }?>
 
         </div>
-        
+
     </body>
 </html>

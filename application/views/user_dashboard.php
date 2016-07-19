@@ -5,54 +5,20 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Dashboard</title>
-        <link rel=stylesheet href="/style.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <style type="text/css">
-            *{
-                margin: 10px;
-                padding: 5px;
-            }
-            p{
-                display: block;
-                margin-bottom: 10px; 
-                width: 503px;
-            }
-            a{
-                display: inline-block;
-                margin: 0px;
-            }
-            #login{
-                border: 1px solid black; 
-            }
-            #review{
-                display: inline-block;
-                width: 300px; 
-            }
-            #review p{
-                margin-left: 35px;  
-                
-            }
-            #side_bar{
-                display: inline-block;
-                float: right;
-            }
-            #all_reviews{
-                border: 1px solid black; 
-                width: 190px;
-                height: auto; 
-                display: block;
-            }
-            #all_reviews a{
-                display: block;
-                margin: 3px; 
-            }
-        </style>
-        
+        <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/public/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="/public/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/css/main.css">
+        <link rel="stylesheet" href="/public/css/sl-slide.css">
     </head>
     <body>
-        <h2>Welcome <?= $this->session->userdata['name']?>!</h2><a href="/trips/add_page">Add Travel Plan</a> <a href="/trips/logout">Log Off</a>
+      <h1>Book-a-Trip Inc.</h1>
+      <section class="title">
+        <h2>Welcome <?= $this->session->userdata['name']?>!</section></h2><a href="/trips/add_page">Add Travel Plan</a> <a href="/trips/logout">Log Off</a>
+
         <div id='container'>
             <h3>Your Trip Schedules:</h3>
             <div id='trips'>
@@ -64,21 +30,22 @@
                         <th>Plan</th>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php
                             foreach ($trips as $trip) {?>
                             <tr>
                                  <td><a href="/trips/details/<?= $trip['des_id'] ?>"><?= $trip['place'] ?></a></td>
                                 <td><?= $trip['start'] ?></td>
                                 <td><?= $trip['end'] ?></td>
                                 <td><?= $trip['plan'] ?></td>
-                            </tr>    
+                            </tr>
                             <?php }
+                            // var_dump($trips);
                          ?>
                     </tbody>
                 </table>
             </div>
-           
-            <h3>Other User's Travel Plans:</h3>  
+
+            <h3>Other User's Travel Plans:</h3>
              <div id='others'>
                 <table class="table table-bordered">
                     <thead>
@@ -89,24 +56,24 @@
                         <th>Do You Want to Join?</th>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php
                             foreach ($others as $other) {?>
-                             
+
                              <tr>
                                 <td><?= $other['planned_by'] ?></td>
-                                <td><a href="/trips/details/<?= $other['des_id'] ?>"><?= $other['place'] ?></a></td>
+                                <td><a href="/trips/details/<?= $other['id'] ?>"><?= $other['place'] ?></a></td>
                                 <td><?= $other['start'] ?></td>
                                 <td><?= $other['end'] ?></td>
-                                <td><a href="/trips/add_des/<?= $other['des_id'] ?>">Join</a></td>
-                            </tr>    
+                                <td><a href="/trips/add_des/<?= $other['id'] ?>">Join</a></td>
+                            </tr>
                             <?php }
                          ?>
                     </tbody>
-                </table>    
+                </table>
             </div>
-            
+
         </div>
 
-        
+
     </body>
 </html>
